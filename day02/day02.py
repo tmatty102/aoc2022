@@ -1,23 +1,3 @@
-"""
-A = rock 1
-B = paper 2 
-C = scissors 3
-X = rock 1 
-Y = paper 2 
-Z = scissors 3
-
-score per shape
-rock = 1
-paper = 2
-scissors = 3
-
-score per round
-lose = 0
-draw = 3
-win = 6
-
-score =  shape_score + round_status
-"""
 win_map = {
     "A": "B",
     "B": "C",
@@ -29,6 +9,7 @@ lose_map = {
     "B": "A",
     "C": "B",    
 }
+
 score_map = {
     "A": 1,
     "B": 2,
@@ -77,34 +58,27 @@ def evaluation(data):
     score_list = []
     for line in data:
         if line[0] == line[2]:
-            print("draw")
             scores = score_map[line[2]] + score_map["draw"]
             score_list.append(scores)
         elif line[0] == "A":
             if line[2] == "C":
-                print("lose")
                 scores = score_map[line[2]] + score_map["lose"]
                 score_list.append(scores)
             else:
-                print("win")
                 scores =  score_map[line[2]] + score_map["win"]
                 score_list.append(scores)
         elif line[0] == "B":
             if line[2] == "A":
-                print("lose")
                 scores = score_map[line[2]] + score_map["lose"]
                 score_list.append(scores)
             else:
-                print("win")
                 scores =  score_map[line[2]] + score_map["win"]
                 score_list.append(scores)
         elif line[0] == "C":
             if line[2] == "B":
-                print("lose")
                 scores = score_map[line[2]] + score_map["lose"]
                 score_list.append(scores)
             else:
-                print("win")
                 scores =  score_map[line[2]] + score_map["win"]
                 score_list.append(scores)
     
@@ -115,18 +89,16 @@ def evaluation(data):
 def part_one(file):    
     data01 = part_one_conversion(file)
     answer = evaluation(data01)
-    return answer
+    print(f"Answer for Part1 is: {answer}")
 
 def part_two(file):
     data02 = part_two_conversion(file)
     answer = evaluation(data02)
-    return answer
+    print(f"Answer for Part2 is: {answer}")
         
 
 if __name__ == "__main__":
     file = "data.txt"
     partone = part_one(file)
     parttwo = part_two(file)
-
-    print(partone)
-    print(parttwo)
+    
