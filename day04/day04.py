@@ -40,7 +40,7 @@ def part1():
         data.remove(data[0])
         #print(f"during in while count: {count}")
         
-    print(f"Part1: {count})
+    print(f"Part1: {count}")
 
 def part2():
     # solve part2
@@ -57,7 +57,7 @@ def part2():
             count = count + 1    
         data.remove(data[0])
         #print(f"during in while count: {count}")
-    print(f"Part2: {count})
+    print(f"Part2: {count}")
 
 if __name__ == "__main__":
     part1()
