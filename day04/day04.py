@@ -22,10 +22,6 @@ def parse_data(content):
     for i in range(int(pre_assignment02[0]),int(pre_assignment02[1])+1):
         assignment02.append(i)    
     return set(assignment01), set(assignment02) 
-
-
-    return new_data
-    
     
 
 def part1():
