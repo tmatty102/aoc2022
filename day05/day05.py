@@ -8,22 +8,30 @@ def get_data(thefile):
     return content
 
 
-def part1():
-    # solve part1
+def solution():
     data = get_data("data.txt")
+
+    # split crates and moves
     org_crate, moves = data.rstrip().split("\n\n")
 
     crates01 = defaultdict(list)
     crates02 = defaultdict(list)
     for n in org_crate.split("\n")[:-1][::-1]:
         i = 1
+        # get index num of actual crate num
+        # i n
+        # 1 1
+        # 5 2
+        # 9 3
+        # 12 4
         while i < len(n):
             if n[i] != " ":
+
                 crates01[(i + 3) // 4].append(n[i])
                 crates02[(i + 3) // 4].append(n[i])
             i += 4
-    print(crates01)
-    print(crates02)
+    # print(crates01)
+    # print(crates02)
 
     for move in moves.split("\n"):
         _, num, _, start, _, dest = move.split(" ")
@@ -42,4 +50,4 @@ def part1():
 
 
 if __name__ == "__main__":
-    part1()
+    solution()
