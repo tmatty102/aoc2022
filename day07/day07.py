@@ -20,7 +20,7 @@ def solution(part):
     for line in data:
         idx = line.strip().split(" ")
         # print(idx)
-        # get directory and path
+        # get directory and create a list
         if idx[0] == "$" and idx[1] == "cd":
             if idx[2] == "/":
                 dir_path = ["/"]
@@ -28,7 +28,7 @@ def solution(part):
                 dir_path.pop()
             else:
                 dir_path.append(idx[2])
-
+        # ignore lines
         elif idx[0] == "$" or idx[0] == "dir":
             pass
         else:
@@ -36,7 +36,8 @@ def solution(part):
             size = int(idx[0])
             for i in range(0, len(dir_path)):
                 # print(dir_path[i])
-                ds["".join(dir_path[: i + 1])] += size
+                ds["/".join(dir_path[: i + 1])] += size
+                # print(dir_path[: i + 1])
         # print(ds)
 
     if part == "part1":
