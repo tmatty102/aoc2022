@@ -1,5 +1,10 @@
 from collections import defaultdict
 
+# look for pattern
+# useful lines  "$ cd <dir>" to get the directory
+# eliminiate wasetful lines dir or $
+# create dict for dir and size
+
 
 def get_data(thefile):
     with open(thefile, "r", encoding="utf-8") as f:
@@ -15,6 +20,7 @@ def solution(part):
     for line in data:
         idx = line.strip().split(" ")
         # print(idx)
+        # get directory and path
         if idx[0] == "$" and idx[1] == "cd":
             if idx[2] == "/":
                 dir_path = ["/"]
@@ -26,10 +32,12 @@ def solution(part):
         elif idx[0] == "$" or idx[0] == "dir":
             pass
         else:
+            #
             size = int(idx[0])
             for i in range(0, len(dir_path)):
-                ds["/".join(dir_path[: i + 1])] += size
-                # print(ds)
+                # print(dir_path[i])
+                ds["".join(dir_path[: i + 1])] += size
+        # print(ds)
 
     if part == "part1":
         print(sum(v for v in ds.values() if v <= 100000))
@@ -39,7 +47,7 @@ def solution(part):
     delete = free_space_needed - (disk_size - ds["/"])
 
     if part == "part2":
-        print(min(s for s in ds.values() if s >= delete))
+        print(min(v for v in ds.values() if v >= delete))
 
 
 def part1():
